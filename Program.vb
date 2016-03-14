@@ -269,8 +269,9 @@ Module Program
         'Call a.AddAttribute("TemplateFormat", "PDF")
         'Call a.AddAttribute("PrinterXml", "<PrintInfo PrintType=""Template"" Name=""Print Proforma"" PrintToScreen=""False"" SaveLocal=""False"" Condense=""False"" TemplateName=""TE_EDG_Proforma"" TemplateFormat=""PDF"" AllowReprint=""False""><AdvancedOptions PaperSize=""A4"" FitMethod=""Standard"" Orientation=""Default"" GridFormat=""6"" KeepGroups=""False"" IntelliBreak=""False"" PrintCoverPage=""False"" PrintHeaderAtTheTop=""False"" PrintGrandTotalOnNewPage=""False"" SuppressIfSame=""False"" /><Email From=""jon.saffron@ashurst.com"" ToList=""jon.saffron@ashurst.com"" /></PrintInfo>")
 
+        Dim profGenerationChild As DataObject = a.AddChild("ProfGeneration")
         For Each mt As MattTkpr In criteria
-            Dim c As OperationAdd = a.AddChild("ProfGeneration").AddOperation()
+            Dim c As OperationAdd = profGenerationChild.AddOperation()
             Call c.AddAttribute("BillingTkpr", mt.Timekeeper)
             Call c.AddAttribute("Matter", mt.Matter)
         Next
